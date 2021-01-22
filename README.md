@@ -12,8 +12,8 @@ Example helm starters:
 
 ## Installation
 
-```sh
-> helm plugin install https://github.com/salesforce/helm-starter.git
+```shell
+helm plugin install https://github.com/ibm-garage-cloud/helm-plugin-starter.git
 ```
 
 ## Usage
@@ -27,13 +27,13 @@ Example helm starters:
 
 To use a starter, run:
 
-```sh
-> helm create NAME --starter STARTERNAME
+```shell
+helm create NAME --starter STARTERNAME
 ```
 
 ## Example
 
-```sh
-> helm starter fetch https://github.com/salesforce/helm-starter-istio.git
-> helm create banana-service --starter helm-starter-istio
+```shell
+helm starter fetch https://github.com/salesforce/helm-starter-istio.git
+helm create banana-service --starter helm-starter-istio
 ```

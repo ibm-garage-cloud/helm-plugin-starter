@@ -18,6 +18,16 @@ Available Commands:
 EOF
 }
 
+if [[ -z "${HELM_HOME}" ]]; then
+  HELM_HOME="${HOME}/.helm"
+fi
+
+if [[ -z "${HELM_PATH_STARTER}" ]]; then
+  HELM_PATH_STARTER="${HELM_HOME}/starters"
+fi
+
+mkdir -p "${HELM_PATH_STARTER}"
+
 # Create the passthru array
 PASSTHRU=()
 while [[ $# -gt 0 ]]

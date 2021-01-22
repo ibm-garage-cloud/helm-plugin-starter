@@ -11,10 +11,10 @@ cat << EOF
 Fetch, list, and delete helm starters from github.
 
 Available Commands:
-    helm starter fetch GITURL       Install a bare Helm starter from Github (e.g git clone)
-    helm starter list               List installed Helm starters
-    helm starter delete NAME        Delete an installed Helm starter
-    --help                          Display this text
+    helm starter fetch GITURL [--name NAME]  Install a bare Helm starter from Github (e.g git clone)
+    helm starter list                        List installed Helm starters
+    helm starter delete NAME                 Delete an installed Helm starter
+    --help                                   Display this text
 EOF
 }
 
@@ -61,8 +61,22 @@ COMMAND=${PASSTHRU[0]}
 
 if [ "$COMMAND" == "fetch" ]; then
     REPO=${PASSTHRU[1]}
+    NAME_ARG=${PASSTHRU[2]}
+    NAME_VALUE=${PASSTHRU[3]}
+    if [[ -n "${NAME_ARG}" ]]; then
+      if [[ "${NAME_ARG}" =~ .*=.* ]]; then
+        STARTER_NAME=$(echo "${NAME_ARG}" | sed "s/.*=//g")
+      elif [[ -n "${NAME_VALUE}" ]]; then
+        STARTER_NAME="${NAME_VALUE}"
+      fi
+    fi
+
     cd ${HELM_PATH_STARTER}
-    git clone ${REPO} --quiet
+    if [[ -n "${STARTER_NAME}" ]]; then
+      git clone ${REPO} ${STARTER_NAME} --quite
+    else
+      git clone ${REPO} --quiet
+    fi
     cd $OLDPWD
     exit 0
 elif [ "$COMMAND" == "list" ]; then

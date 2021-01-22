@@ -73,7 +73,7 @@ if [ "$COMMAND" == "fetch" ]; then
 
     cd ${HELM_PATH_STARTER}
     if [[ -n "${STARTER_NAME}" ]]; then
-      git clone ${REPO} ${STARTER_NAME} --quite
+      git clone ${REPO} ${STARTER_NAME} --quiet
     else
       git clone ${REPO} --quiet
     fi

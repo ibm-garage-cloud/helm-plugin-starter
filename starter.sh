@@ -73,8 +73,10 @@ if [ "$COMMAND" == "fetch" ]; then
 
     cd ${HELM_PATH_STARTER}
     if [[ -n "${STARTER_NAME}" ]]; then
+      echo "Fetching ${REPO} into ${HELM_PATH_STARTER}/${STARTER_NAME}"
       git clone ${REPO} ${STARTER_NAME} --quiet
     else
+      echo "Fetching ${REPO} into ${HELM_PATH_STARTER}"
       git clone ${REPO} --quiet
     fi
     cd $OLDPWD

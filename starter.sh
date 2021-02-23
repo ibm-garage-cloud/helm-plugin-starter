@@ -18,8 +18,6 @@ Available Commands:
 EOF
 }
 
-HELM_DATA_HOME
-
 if [[ -z "${HELM_DATA_HOME}" ]]; then
   HELM_DATA_HOME="${HOME}/.helm"
 fi

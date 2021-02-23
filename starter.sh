@@ -18,12 +18,14 @@ Available Commands:
 EOF
 }
 
-if [[ -z "${HELM_HOME}" ]]; then
-  HELM_HOME="${HOME}/.helm"
+HELM_DATA_HOME
+
+if [[ -z "${HELM_DATA_HOME}" ]]; then
+  HELM_DATA_HOME="${HOME}/.helm"
 fi
 
 if [[ -z "${HELM_PATH_STARTER}" ]]; then
-  HELM_PATH_STARTER="${HELM_HOME}/starters"
+  HELM_PATH_STARTER="${HELM_DATA_HOME}/starters"
 fi
 
 mkdir -p "${HELM_PATH_STARTER}"
